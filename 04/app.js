@@ -28,14 +28,13 @@ const getCoordinates = evt => {
     acc[key] = value;
     return acc;
   }, {});
-  
+
   return data
 };
 
 const handleGetData = async cordData => {
   try{
     const data = await getData(cordData)
-    console.log(data);
     return data
   }catch(error){
     throw(error)
@@ -45,7 +44,7 @@ const handleGetData = async cordData => {
 const getData = async cordData => {
   const lat = Number(cordData.latitude);
   const long = Number(cordData.longitude);
-  return (fetch(`https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${long}&key=2a72180fff2f4dd68377883af95a41e7&include=minutely`)
+  return (fetch(`https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${long}&key=${API_KEY}&include=minutely`)
      .then(res => res.json())
      .then(data => {
         return data;
